@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Reservation Received</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #2b5876, #4e4376);
+            font-family: 'Segoe UI', Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            color: white;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 40px;
+            width: 420px;
+        }
+        p { margin: 8px 0; }
+        b { color: #ffd166; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Thanks, <span th:text="${reservation.firstName}">First</span>!</h1>
+        <p><b>Last Name:</b> <span th:text="${reservation.lastName}"></span></p>
+        <p><b>Passengers:</b> <span th:text="${reservation.numberOfPassengers}"></span></p>
+        <p><b>Class:</b> <span th:text="${reservation.travelClass}"></span></p>
+        <p><b>Phone:</b> <span th:text="${reservation.phoneNumber}"></span></p>
+        <p><b>Time:</b> <span th:text="${reservation.time}"></span></p>
+        <p><b>Departure Date:</b> <span th:text="${reservation.departureDate}"></span></p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Husky Air - Fill Your Details</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #2b5876, #4e4376);
+            font-family: 'Segoe UI', Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 40px;
+            width: 480px;
+            color: white;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        }
+        h1 {
+            font-size: 28px;
+            margin-bottom: 30px;
+        }
+        .field {
+            margin-bottom: 18px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 6px;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 6px;
+            border: none;
+            box-sizing: border-box;
+            font-size: 15px;
+        }
+        .row {
+            display: flex;
+            gap: 10px;
+        }
+        .row > div {
+            flex: 1;
+        }
+        button {
+            margin-top: 20px;
+            padding: 12px 30px;
+            background: white;
+            color: #2b5876;
+            font-weight: bold;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            float: right;
+            font-size: 15px;
+        }
+        button:hover {
+            background: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Fill your Details</h1>
+
+        <form th:action="@{/reservation/submit}" th:object="${reservation}" method="post">
+
+            <div class="field">
+                <label>Customer ID</label>
+                <input type="text" th:field="*{customerId}" placeholder="e.g. cust-001" required />
+            </div>
+
+            <div class="field">
+                <label>First Name</label>
+                <input type="text" th:field="*{firstName}" required />
+            </div>
+
+            <div class="field">
+                <label>Last Name</label>
+                <input type="text" th:field="*{lastName}" required />
+            </div>
+
+            <div class="row">
+                <div class="field">
+                    <label>No. Of Passengers</label>
+                    <input type="number" th:field="*{numberOfPassengers}" min="1" required />
+                </div>
+                <div class="field">
+                    <label>Select Your Class</label>
+                    <select th:field="*{travelClass}">
+                        <option value="Economy">Economy class</option>
+                        <option value="Business">Business class</option>
+                        <option value="First">First class</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="field">
+                <label>Phone Number</label>
+                <input type="text" th:field="*{phoneNumber}" required />
+            </div>
+
+            <div class="field">
+                <label>Time</label>
+                <input type="time" th:field="*{time}" />
+            </div>
+
+            <div class="field">
+                <label>Date of Departing</label>
+                <input type="date" th:field="*{departureDate}" />
+            </div>
+
+            <button type="submit">Next</button>
+            <div style="clear: both;"></div>
+        </form>
+    </div>
+</body>
+</html>
